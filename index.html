@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmDirect — Farm to Your Doorstep in 24 Hours</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- =====================================================
+     NAV
+====================================================== -->
+<nav id="navbar">
+  <div class="nav-logo">🌾 Farm<span>Direct</span></div>
+  <div class="nav-links">
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="scrollToSection('marketplace')">Marketplace</a>
+    <a onclick="scrollToSection('farmers')">Our Farmers</a>
+    <a onclick="scrollToSection('features')">Features</a>
+    <a onclick="scrollToSection('subscription')">Subscribe</a>
+  </div>
+  <div class="nav-ctas">
+    <button class="btn btn-outline" onclick="openModal('farmer')">Farmer Login</button>
+    <button class="btn btn-primary" onclick="openModal('consumer')">Shop Now</button>
+  </div>
+</nav>
+
+<!-- =====================================================
+     HOME PAGE
+====================================================== -->
+<div id="page-home" class="page active">
+
+  <!-- HERO SECTION
+       -------------------------------------------------------
+       🖼️ IMAGE TO CHANGE: Hero background photo
+       Location: styles.css → .hero-bg → background: url('...')
+       Current: Unsplash market photo
+       Replace with your own farm/vegetable photo URL or local path
+       ------------------------------------------------------- -->
+  <section class="hero" style="padding-top:72px;">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><span class="dot"></span> 12,400+ Verified Farmers Live</div>
+      <h1>Farm to Your<br><em>Doorstep</em><br>in 24 Hours</h1>
+      <p>Connecting farmers and families directly. Fair prices for farmers, fresher food for you — with full transparency at every step.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary btn-xl" onclick="openModal('consumer')">🛒 Shop Fresh Produce</button>
+        <button class="btn btn-outline btn-xl" style="color:white;border-color:rgba(255,255,255,0.5)" onclick="openModal('farmer')">🌱 I'm a Farmer</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="num">12,400+</span><span class="lbl">Verified Farmers</span></div>
+        <div class="stat"><span class="num">3.2L+</span><span class="lbl">Orders Delivered</span></div>
+        <div class="stat"><span class="num">340+</span><span class="lbl">Cities Covered</span></div>
+        <div class="stat"><span class="num">4.8★</span><span class="lbl">Average Rating</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-item"><span class="icon">✓</span> Aadhaar-Verified Farmers</div>
+    <div class="trust-item"><span class="icon">✓</span> 100% Freshness Guarantee</div>
+    <div class="trust-item"><span class="icon">✓</span> Farm-to-Door in 24 Hours</div>
+    <div class="trust-item"><span class="icon">✓</span> Secure UPI & COD Payments</div>
+    <div class="trust-item"><span class="icon">✓</span> Instant Refund Policy</div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how">
+    <div style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">From <em>Soil to Table</em> in Three Simple Steps</h2>
+      <p class="section-desc">No middlemen. No cold storage surprises. Just fresh produce going directly from the farm to your kitchen.</p>
+    </div>
+    <div class="steps-grid fade-up">
+      <div class="step">
+        <span class="step-num">STEP 01</span>
+        <div class="step-icon">🌾</div>
+        <h3>Farmer Lists Produce</h3>
+        <p>Farmers upload fresh crops using voice notes, photos, or text in their regional language. AI suggests the best price. Live in 90 seconds.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">STEP 02</span>
+        <div class="step-icon">🔍</div>
+        <h3>You Browse & Order</h3>
+        <p>Filter by location, crop, price, and organic status. See the farmer's face, village, and ratings. Order with one tap.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">STEP 03</span>
+        <div class="step-icon">📦</div>
+        <h3>Packed & Delivered</h3>
+        <p>Fresh from the farm, packed with a QR code, and delivered to your door. Live tracking every step of the way.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">STEP 04</span>
+        <div class="step-icon">⭐</div>
+        <h3>Rate & Build Trust</h3>
+        <p>Upload a delivery photo, rate freshness and accuracy, earn FarmCoins. Your review helps other buyers and rewards honest farmers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE MARKETPLACE -->
+  <section class="marketplace-section" id="marketplace">
+    <div class="section-label">Live Marketplace</div>
+    <h2 class="section-title">Freshly <em>Harvested Today</em></h2>
+    <p class="section-desc">Every listing is from a verified farmer. Prices are transparent — you see exactly what the farmer earns.</p>
+    <div class="marketplace-filters">
+      <button class="filter-pill active" onclick="filterProducts(this,'all')">All Produce</button>
+      <button class="filter-pill" onclick="filterProducts(this,'vegetables')">🥦 Vegetables</button>
+      <button class="filter-pill" onclick="filterProducts(this,'fruits')">🍅 Fruits</button>
+      <button class="filter-pill" onclick="filterProducts(this,'grains')">🌾 Grains</button>
+      <button class="filter-pill" onclick="filterProducts(this,'organic')">🌿 Organic</button>
+      <button class="filter-pill" onclick="filterProducts(this,'seasonal')">🌸 Seasonal</button>
+    </div>
+    <!-- Products are injected here by script.js → renderProducts() -->
+    <div class="products-grid" id="productsGrid"></div>
+    <div style="text-align:center;margin-top:40px;">
+      <button class="btn btn-outline btn-lg" onclick="openModal('consumer')">View All 840+ Listings →</button>
+    </div>
+  </section>
+
+  <!-- FARMER STORIES
+       -------------------------------------------------------
+       🖼️ FARMER PROFILE IMAGES TO CHANGE (4 farmers):
+       1. Ramesh Reddy   → <img src="YOUR_IMAGE_URL" ...> (first farmer card)
+       2. Lakshmi Devi   → <img src="YOUR_IMAGE_URL" ...> (second farmer card)
+       3. Suresh Kumar   → <img src="YOUR_IMAGE_URL" ...> (third farmer card)
+       4. Priya Shankar  → <img src="YOUR_IMAGE_URL" ...> (fourth farmer card)
+
+       To use local images: src="images/ramesh.jpg"
+       (put your images in an 'images' folder next to index.html)
+       ------------------------------------------------------- -->
+  <section class="farmers-section" id="farmers">
+    <div class="section-label">Our Farmers</div>
+    <h2 class="section-title">Meet the Hands That <em>Feed You</em></h2>
+    <p class="section-desc">Every farmer on FarmDirect is Aadhaar-verified, physically onboarded, and proud to put their name on their produce.</p>
+    <div class="farmers-grid">
+
+      <!-- FARMER 1 — Change src to your own image -->
+      <div class="farmer-card" onclick="openModal('consumer')">
+        <div class="farmer-card-top">
+          <img src="https://img.freepik.com/premium-photo/happy-indian-farmer-with-freshly-harvested-onion_822782-1140.jpg?semt=ais_rp_progressive&w=740&q=80"
+               class="farmer-card-img" alt="Ramesh">
+          <!-- ↑ Replace the src above with your image, e.g. src="images/ramesh.jpg" -->
+          <div class="farmer-card-info">
+            <h4>Ramesh Reddy</h4>
+            <p>Karimnagar, Telangana<br>Farming since 1998 • 26 years</p>
+            <div class="verified">✓ Verified Farmer</div>
+          </div>
+        </div>
+        <div class="farmer-crops">
+          <span class="crop-tag">Tomatoes</span>
+          <span class="crop-tag">Onions</span>
+          <span class="crop-tag">Chillies</span>
+        </div>
+        <div class="farmer-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.9</span>
+          <span class="rating-reviews">(312 reviews)</span>
+        </div>
+      </div>
+
+      <!-- FARMER 2 — Change src to your own image -->
+      <div class="farmer-card" onclick="openModal('consumer')">
+        <div class="farmer-card-top">
+          <img src="https://static.vecteezy.com/system/resources/thumbnails/038/451/514/small/ai-generated-indian-female-farmer-working-in-her-field-bokeh-style-background-with-generative-ai-photo.jpeg"
+               class="farmer-card-img" alt="Lakshmi">
+          <!-- ↑ Replace the src above with your image -->
+          <div class="farmer-card-info">
+            <h4>Lakshmi Devi</h4>
+            <p>Nalgonda, Telangana<br>Farming since 2005 • 19 years</p>
+            <div class="verified">✓ Verified Farmer</div>
+          </div>
+        </div>
+        <div class="farmer-crops">
+          <span class="crop-tag">Spinach</span>
+          <span class="crop-tag">Coriander</span>
+          <span class="crop-tag">Brinjal</span>
+        </div>
+        <div class="farmer-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.8</span>
+          <span class="rating-reviews">(187 reviews)</span>
+        </div>
+      </div>
+
+      <!-- FARMER 3 — Change src to your own image -->
+      <div class="farmer-card" onclick="openModal('consumer')">
+        <div class="farmer-card-top">
+          <img src="https://img.freepik.com/free-photo/indian-farmer-sugarcane-field_23-2151996287.jpg?semt=ais_rp_progressive&w=740&q=80"
+               class="farmer-card-img" alt="Suresh">
+          <!-- ↑ Replace the src above with your image -->
+          <div class="farmer-card-info">
+            <h4>Suresh Kumar</h4>
+            <p>Ratnagiri, Maharashtra<br>Farming since 1990 • 34 years</p>
+            <div class="verified">✓ Verified Farmer</div>
+          </div>
+        </div>
+        <div class="farmer-crops">
+          <span class="crop-tag">Alphonso Mango</span>
+          <span class="crop-tag">Coconut</span>
+        </div>
+        <div class="farmer-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">5.0</span>
+          <span class="rating-reviews">(521 reviews)</span>
+        </div>
+      </div>
+
+      <!-- FARMER 4 — Change src to your own image -->
+      <div class="farmer-card" onclick="openModal('consumer')">
+        <div class="farmer-card-top">
+          <img src="https://www.shutterstock.com/image-photo/indian-young-woman-farmer-harvesting-260nw-2611755429.jpg"
+               class="farmer-card-img" alt="Priya">
+          <!-- ↑ Replace the src above with your image -->
+          <div class="farmer-card-info">
+            <h4>Priya Shankar</h4>
+            <p>Coimbatore, Tamil Nadu<br>Organic certified • 12 years</p>
+            <div class="verified">✓ Organic Certified</div>
+          </div>
+        </div>
+        <div class="farmer-crops">
+          <span class="crop-tag">Turmeric</span>
+          <span class="crop-tag">Banana</span>
+          <span class="crop-tag">Drumstick</span>
+        </div>
+        <div class="farmer-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-num">4.9</span>
+          <span class="rating-reviews">(244 reviews)</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features-section" id="features">
+    <div style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="section-label">Platform Features</div>
+      <h2 class="section-title">Everything You Need, <em>Nothing You Don't</em></h2>
+    </div>
+    <div class="features-grid fade-up">
+      <div class="feature-card">
+        <div class="feature-icon fi-blue">🤖</div>
+        <h3>AI Smart Pricing</h3>
+        <p>Our AI compares mandi prices, seasonal demand, and regional data to suggest optimal pricing — farmers earn up to 40% more.</p>
+        <span class="feature-tag new">AI-Powered</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-green">💬</div>
+        <h3>Direct Farmer Chat</h3>
+        <p>WhatsApp-style chat with your farmer. Ask about organic practices, custom orders, or when the next harvest drops.</p>
+        <span class="feature-tag">Real-time</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-amber">📍</div>
+        <h3>Live Order Tracking</h3>
+        <p>Farm pickup photo → packing photo → transit map → delivery. Know exactly where your produce is at every moment.</p>
+        <span class="feature-tag">Live GPS</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-green">🔔</div>
+        <h3>Harvest Alerts</h3>
+        <p>"Ramesh's watermelons are ready — 200kg available!" Get personalised alerts when your favourite farmers list new produce.</p>
+        <span class="feature-tag new">Smart Alerts</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-blue">🏆</div>
+        <h3>FarmCoins Loyalty</h3>
+        <p>Earn 1 FarmCoin per ₹10 spent. Redeem for discounts, free delivery, or donate to the Farmer Welfare Fund.</p>
+        <span class="feature-tag">Rewards</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-amber">📋</div>
+        <h3>Farm-to-Fork Timeline</h3>
+        <p>Full transparency: harvested Tuesday 6am → packed Wednesday → delivered Thursday 10am. Real photos at each step.</p>
+        <span class="feature-tag">Transparency</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI PRICING BANNER -->
+  <div class="ai-banner" id="ai">
+    <div class="ai-content">
+      <div class="section-label">AI Pricing Engine</div>
+      <h2>Farmers Earn <em style="color:#a5d6a7">40% More</em><br>With Smart Pricing</h2>
+      <p>Our AI reads live APMC mandi prices, local demand, and seasonal patterns to suggest the optimal listing price — automatically. Farmers keep full control and always earn more than middlemen would pay.</p>
+      <button class="btn btn-amber btn-lg" onclick="openModal('farmer')">Start Earning More →</button>
+    </div>
+    <div class="ai-card">
+      <div class="ai-card-title">🤖 AI Price Suggestion — Tomatoes, 50kg</div>
+      <div class="price-compare">
+        <div class="price-row mandi">
+          <span class="label">Mandi (middleman) price</span>
+          <span class="value">₹12/kg</span>
+        </div>
+        <div class="price-row suggested">
+          <span class="label">FarmDirect suggested price</span>
+          <span class="value">₹20/kg</span>
+        </div>
+        <div class="price-row earn">
+          <span class="label" style="color:#92400e">Extra earnings (50 kg)</span>
+          <span class="value">+₹400 🎉</span>
+        </div>
+      </div>
+      <div class="ai-note">Based on live AgMarknet data • Updates every 6 hours</div>
+    </div>
+  </div>
+
+  <!-- REVIEWS SECTION
+       -------------------------------------------------------
+       🖼️ REVIEWER PROFILE IMAGES (3 reviewers):
+       1. Ananya Sharma  → first <img class="reviewer-img" src="...">
+       2. Rahul Verma    → second <img class="reviewer-img" src="...">
+       3. Meera Nair     → third <img class="reviewer-img" src="...">
+
+       🖼️ REVIEW PRODUCT THUMBNAIL IMAGES (3 product thumbs):
+       1. Tomato thumb   → first <img class="review-photo" src="...">
+       2. Mango thumb    → second <img class="review-photo" src="...">
+       3. Organic thumb  → third <img class="review-photo" src="...">
+       ------------------------------------------------------- -->
+  <section class="reviews-section">
+    <div style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title">Trusted by <em>Lakhs of Families</em></h2>
+    </div>
+    <div class="reviews-grid fade-up">
+
+      <!-- REVIEW 1 -->
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100"
+               class="reviewer-img" alt="">
+          <!-- ↑ Replace with reviewer photo -->
+          <div class="reviewer-info"><h4>Ananya Sharma</h4><p>Hyderabad, Telangana</p></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Got tomatoes from Ramesh in Karimnagar — freshest I've ever bought. Still had soil on them! And ₹8 cheaper per kg than DMart."</p>
+        <div class="review-product">
+          <img src="https://media.post.rvohealth.io/wp-content/uploads/2020/09/AN313-Tomatoes-732x549-Thumb.jpg"
+               class="review-photo" alt="">
+          <!-- ↑ Replace with tomato product photo -->
+          <span>✓ Purchased: Tomatoes from Ramesh Reddy</span>
+        </div>
+      </div>
+
+      <!-- REVIEW 2 -->
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100"
+               class="reviewer-img" alt="">
+          <!-- ↑ Replace with reviewer photo -->
+          <div class="reviewer-info"><h4>Rahul Verma</h4><p>Pune, Maharashtra</p></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The Alphonso mangoes from Suresh in Ratnagiri are absolutely unreal. I chatted with him directly and he told me exactly when they were picked."</p>
+        <div class="review-product">
+          <img src="https://images.unsplash.com/photo-1605027990121-cbae9e0642df?q=80&w=80"
+               class="review-photo" alt="">
+          <!-- ↑ Replace with mango product photo -->
+          <span>✓ Purchased: Alphonso Mangoes from Suresh Kumar</span>
+        </div>
+      </div>
+
+      <!-- REVIEW 3 -->
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100"
+               class="reviewer-img" alt="">
+          <!-- ↑ Replace with reviewer photo -->
+          <div class="reviewer-info"><h4>Meera Nair</h4><p>Bengaluru, Karnataka</p></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I subscribed to Priya's weekly organic basket and it's changed how I cook. Fresh turmeric, banana flowers, drumstick — things I never found in supermarkets."</p>
+        <div class="review-product">
+          <img src="https://images.unsplash.com/photo-1603833665858-e61d17a86224?q=80&w=80"
+               class="review-photo" alt="">
+          <!-- ↑ Replace with organic product photo -->
+          <span>✓ Weekly Organic Basket from Priya Shankar</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SUBSCRIPTION / PLANS SECTION -->
+  <section class="subscription-section" id="subscription">
+    <div style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="section-label">Weekly Baskets</div>
+      <h2 class="section-title">Subscribe & <em>Save 15%</em> Every Week</h2>
+      <p class="section-desc">Choose your basket size. Your farmer knows your order in advance — less waste, better freshness, guaranteed delivery every week.</p>
+    </div>
+    <div class="plans-grid fade-up">
+      <div class="plan-card">
+        <div class="plan-icon">🌿</div>
+        <div class="plan-name">Solo</div>
+        <div class="plan-price">₹249<span>/week</span></div>
+        <div class="plan-desc">Perfect for 1–2 people</div>
+        <ul class="plan-features">
+          <li>3–4 kg seasonal vegetables</li>
+          <li>Choose 2 farmers</li>
+          <li>Free delivery</li>
+          <li>Skip anytime</li>
+        </ul>
+        <button class="btn btn-outline" style="width:100%;justify-content:center;" onclick="openModal('consumer')">Start Basket</button>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-savings">Save ₹180/month</div>
+        <div class="plan-icon">🥕</div>
+        <div class="plan-name">Family</div>
+        <div class="plan-price">₹449<span>/week</span></div>
+        <div class="plan-desc">Ideal for a family of 4</div>
+        <ul class="plan-features">
+          <li>6–8 kg mixed produce</li>
+          <li>Choose up to 4 farmers</li>
+          <li>Free priority delivery</li>
+          <li>15% off all items</li>
+          <li>Early harvest alerts</li>
+        </ul>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="openModal('consumer')">Start Basket →</button>
+      </div>
+      <div class="plan-card">
+        <div class="plan-icon">🌾</div>
+        <div class="plan-name">Community</div>
+        <div class="plan-price">₹999<span>/week</span></div>
+        <div class="plan-desc">For offices or housing societies</div>
+        <ul class="plan-features">
+          <li>15–20 kg bulk order</li>
+          <li>Dedicated farmer partner</li>
+          <li>Custom crop requests</li>
+          <li>Invoice & GST receipt</li>
+          <li>Account manager</li>
+        </ul>
+        <button class="btn btn-outline" style="width:100%;justify-content:center;" onclick="openModal('consumer')">Contact Sales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">🌾 Farm<span style="color:#a5d6a7">Direct</span></div>
+        <p>Connecting Indian farmers directly to consumers. Fair prices, fresher food, transparent supply chains. Built with love for Bharat.</p>
+        <div style="display:flex;gap:8px;margin-top:20px;flex-wrap:wrap;">
+          <span style="background:rgba(255,255,255,0.08);padding:6px 14px;border-radius:40px;font-size:12px;color:rgba(255,255,255,0.6)">🇮🇳 Made in India</span>
+          <span style="background:rgba(255,255,255,0.08);padding:6px 14px;border-radius:40px;font-size:12px;color:rgba(255,255,255,0.6)">12,400+ Farmers</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a onclick="openModal('consumer')">Browse Produce</a></li>
+          <li><a onclick="openModal('farmer')">Farmer Sign Up</a></li>
+          <li><a onclick="scrollToSection('subscription')">Weekly Baskets</a></li>
+          <li><a>FarmCoins</a></li>
+          <li><a>Track Order</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a>About Us</a></li>
+          <li><a>Our Mission</a></li>
+          <li><a>Press & Media</a></li>
+          <li><a>Careers</a></li>
+          <li><a>Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a>Help Centre</a></li>
+          <li><a>Refund Policy</a></li>
+          <li><a>Privacy Policy</a></li>
+          <li><a>Terms of Service</a></li>
+          <li><a>WhatsApp Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 FarmDirect Technologies Pvt. Ltd. All rights reserved.</p>
+      <div class="footer-socials">
+        <div class="social-btn">📘</div>
+        <div class="social-btn">📸</div>
+        <div class="social-btn">🐦</div>
+        <div class="social-btn">▶️</div>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- end page-home -->
+
+
+<!-- =====================================================
+     FARMER DASHBOARD PAGE
+====================================================== -->
+<div id="page-farmer" class="page">
+  <div class="dashboard-layout">
+    <div class="sidebar">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">R</div>
+        <div>
+          <div class="sidebar-name">Ramesh Reddy</div>
+          <div class="sidebar-role">Karimnagar, Telangana</div>
+        </div>
+      </div>
+      <ul class="sidebar-nav">
+        <li><a class="active" onclick="showDashTab('overview')"><span class="sicon">📊</span> Dashboard</a></li>
+        <li><a onclick="showDashTab('listings')"><span class="sicon">📋</span> My Listings</a></li>
+        <li><a onclick="showDashTab('add')"><span class="sicon">➕</span> Add Produce</a></li>
+        <li><a onclick="showDashTab('orders')"><span class="sicon">📦</span> Orders</a></li>
+        <li><a onclick="showDashTab('earnings')"><span class="sicon">💰</span> Earnings</a></li>
+        <li><a><span class="sicon">💬</span> Buyer Chat</a></li>
+        <li><a><span class="sicon">⭐</span> Reviews</a></li>
+        <li><a><span class="sicon">👤</span> My Profile</a></li>
+        <li style="margin-top:40px;"><a onclick="showPage('home')"><span class="sicon">🚪</span> Back to Home</a></li>
+      </ul>
+    </div>
+    <div class="dash-content">
+
+      <!-- OVERVIEW TAB -->
+      <div id="dtab-overview">
+        <div class="dash-header">
+          <h2>Good morning, Ramesh! 🌅</h2>
+          <p>Tuesday, 3 December 2024 • Karimnagar, Telangana</p>
+        </div>
+        <div class="metrics-row">
+          <div class="metric-card"><div class="metric-icon">💰</div><div class="metric-val">₹18,240</div><div class="metric-label">This Month Earnings</div><div class="metric-change up">↑ 23% vs last month</div></div>
+          <div class="metric-card"><div class="metric-icon">📦</div><div class="metric-val">47</div><div class="metric-label">Orders This Month</div><div class="metric-change up">↑ 12 new</div></div>
+          <div class="metric-card"><div class="metric-icon">🌾</div><div class="metric-val">580 kg</div><div class="metric-label">Produce Sold</div><div class="metric-change up">↑ 8% vs target</div></div>
+          <div class="metric-card"><div class="metric-icon">⭐</div><div class="metric-val">4.9</div><div class="metric-label">Quality Rating</div><div class="metric-change up">312 reviews</div></div>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <h3>Active Listings</h3>
+            <div class="listing-row"><div class="listing-info"><h4>Tomatoes</h4><p>45 kg remaining</p></div><div style="display:flex;align-items:center;gap:12px;"><span class="listing-price">₹20/kg</span><span class="status-badge sb-active">Active</span></div></div>
+            <div class="listing-row"><div class="listing-info"><h4>Onions</h4><p>12 kg remaining</p></div><div style="display:flex;align-items:center;gap:12px;"><span class="listing-price">₹18/kg</span><span class="status-badge sb-low">Low Stock</span></div></div>
+            <div class="listing-row"><div class="listing-info"><h4>Green Chillies</h4><p>0 kg remaining</p></div><div style="display:flex;align-items:center;gap:12px;"><span class="listing-price">₹60/kg</span><span class="status-badge sb-out">Sold Out</span></div></div>
+            <button class="btn btn-primary" style="margin-top:16px;width:100%;justify-content:center;" onclick="showDashTab('add')">+ Add New Listing</button>
+          </div>
+          <div class="dash-card">
+            <h3>Recent Orders</h3>
+            <div class="order-row"><div><div class="order-num">#FD-4821</div><div class="order-name">Ananya Sharma</div><div class="order-meta">5 kg Tomatoes • Hyderabad</div></div><div style="text-align:right;"><span class="status-badge sb-active">Delivered</span><div style="font-family:'DM Mono',monospace;font-size:16px;color:var(--green-dark);margin-top:4px;">₹100</div></div></div>
+            <div class="order-row"><div><div class="order-num">#FD-4819</div><div class="order-name">Kiran Babu</div><div class="order-meta">8 kg Tomatoes + 3kg Onions</div></div><div style="text-align:right;"><span class="status-badge sb-low">In Transit</span><div style="font-family:'DM Mono',monospace;font-size:16px;color:var(--green-dark);margin-top:4px;">₹214</div></div></div>
+            <div class="order-row"><div><div class="order-num">#FD-4815</div><div class="order-name">Meera Singh</div><div class="order-meta">10 kg Tomatoes • Chennai</div></div><div style="text-align:right;"><span class="status-badge sb-active">Delivered</span><div style="font-family:'DM Mono',monospace;font-size:16px;color:var(--green-dark);margin-top:4px;">₹200</div></div></div>
+          </div>
+          <div class="dash-card" style="grid-column:1/-1;">
+            <h3>🤖 AI Price Suggestion Today</h3>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:4px;">
+              <div style="background:var(--green-pale);border-radius:12px;padding:18px;"><div style="font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:4px;">Tomatoes</div><div style="font-size:12px;color:var(--text-muted);">Mandi: ₹14/kg</div><div style="font-size:20px;font-weight:700;color:var(--green-mid);margin:6px 0;">₹20/kg ↑</div><div style="font-size:12px;color:var(--green-mid);">Earn ₹6 more per kg</div></div>
+              <div style="background:var(--amber-light);border-radius:12px;padding:18px;"><div style="font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:4px;">Onions</div><div style="font-size:12px;color:var(--text-muted);">Mandi: ₹16/kg</div><div style="font-size:20px;font-weight:700;color:#92400e;margin:6px 0;">₹21/kg ↑</div><div style="font-size:12px;color:#92400e;">High demand this week</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD LISTING TAB -->
+      <div id="dtab-add" style="display:none;">
+        <div class="dash-header"><h2>Add New Produce 🌱</h2><p>Post your listing in under 90 seconds</p></div>
+        <div class="dash-card" style="max-width:600px;">
+          <h3>Listing Details</h3>
+          <div class="add-listing-form">
+            <div class="form-group"><label>Produce Name</label><input type="text" placeholder="e.g. Tomatoes, Onions, Spinach"></div>
+            <div class="form-row">
+              <div class="form-group"><label>Quantity (kg)</label><input type="number" placeholder="e.g. 50"></div>
+              <div class="form-group"><label>Price per kg (₹)</label><input type="number" placeholder="e.g. 20"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Category</label><select><option>Vegetables</option><option>Fruits</option><option>Grains</option><option>Spices</option><option>Dairy</option></select></div>
+              <div class="form-group"><label>Harvest Date</label><input type="date"></div>
+            </div>
+            <div class="form-group"><label>Description (optional)</label><input type="text" placeholder="e.g. Naturally grown, no pesticides, from Karimnagar"></div>
+            <div style="background:var(--green-pale);border-radius:12px;padding:16px;border:1px dashed var(--green-mid);cursor:pointer;text-align:center;">
+              <div style="font-size:28px;margin-bottom:6px;">📸</div>
+              <div style="font-size:14px;font-weight:500;color:var(--green-mid);">Upload Produce Photo</div>
+              <div style="font-size:12px;color:var(--text-muted);">Tap to take a photo or choose from gallery</div>
+            </div>
+            <div style="background:var(--green-light);border-radius:12px;padding:16px;">
+              <div style="font-size:13px;font-weight:600;color:var(--green-dark);margin-bottom:6px;">🤖 AI Price Suggestion</div>
+              <div style="font-size:13px;color:var(--text-muted);">Based on today's mandi prices, we suggest <strong style="color:var(--green-mid)">₹20–22/kg</strong> for tomatoes. You'll earn ₹6 more per kg than selling to middlemen.</div>
+            </div>
+            <button class="btn btn-primary btn-lg" style="justify-content:center;" onclick="alert('Listing posted! ✅ Your tomatoes are now live on FarmDirect.')">🚀 Post Listing Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDERS TAB -->
+      <div id="dtab-orders" style="display:none;">
+        <div class="dash-header"><h2>Manage Orders 📦</h2><p>Accept, pack and track your orders</p></div>
+        <div class="dash-card"><h3>Pending Orders</h3>
+          <div class="order-row" style="background:var(--green-pale);border-radius:12px;padding:16px;margin-bottom:12px;flex-wrap:wrap;gap:12px;">
+            <div><div class="order-num">#FD-4823 • Just now</div><div class="order-name">Sunita Reddy, Hyderabad</div><div class="order-meta">10 kg Tomatoes + 5 kg Onions</div></div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+              <div style="font-family:'DM Mono',monospace;font-size:20px;font-weight:500;color:var(--green-dark);">₹290</div>
+              <button class="btn btn-primary" onclick="alert('Order #FD-4823 accepted!')">Accept Order</button>
+              <button class="btn btn-outline" onclick="alert('Order declined.')">Decline</button>
+            </div>
+          </div>
+          <div style="text-align:center;padding:20px;color:var(--text-muted);font-size:14px;">No more pending orders. Great job! 🎉</div>
+        </div>
+      </div>
+
+      <!-- EARNINGS TAB -->
+      <div id="dtab-earnings" style="display:none;">
+        <div class="dash-header"><h2>Earnings & Payouts 💰</h2><p>Payments released within 24 hours of delivery</p></div>
+        <div class="metrics-row">
+          <div class="metric-card"><div class="metric-icon">💰</div><div class="metric-val">₹18,240</div><div class="metric-label">December Earnings</div></div>
+          <div class="metric-card"><div class="metric-icon">🏦</div><div class="metric-val">₹15,800</div><div class="metric-label">Paid to Bank</div><div class="metric-change up">↑ Last payout: Dec 2</div></div>
+          <div class="metric-card"><div class="metric-icon">⏳</div><div class="metric-val">₹2,440</div><div class="metric-label">Pending Release</div></div>
+        </div>
+        <div class="dash-card"><h3>Payout History</h3>
+          <div class="order-row"><div><div class="order-name">December 2 Payout</div><div class="order-meta">8 orders • Nov 28–Dec 1</div></div><div style="font-family:'DM Mono',monospace;font-size:18px;color:var(--green-dark);">₹8,420</div></div>
+          <div class="order-row"><div><div class="order-name">November 25 Payout</div><div class="order-meta">11 orders • Nov 20–24</div></div><div style="font-family:'DM Mono',monospace;font-size:18px;color:var(--green-dark);">₹7,380</div></div>
+          <div class="order-row"><div><div class="order-name">November 18 Payout</div><div class="order-meta">9 orders • Nov 13–17</div></div><div style="font-family:'DM Mono',monospace;font-size:18px;color:var(--green-dark);">₹6,910</div></div>
+        </div>
+      </div>
+
+      <!-- LISTINGS TAB -->
+      <div id="dtab-listings" style="display:none;">
+        <div class="dash-header"><h2>My Listings 📋</h2><p>Manage your active produce listings</p></div>
+        <div class="dash-card"><h3>Current Listings</h3>
+          <div class="listing-row"><div class="listing-info"><h4>Tomatoes</h4><p>45 kg remaining • Harvested Dec 1</p></div><div style="display:flex;align-items:center;gap:12px;"><span class="listing-price">₹20/kg</span><span class="status-badge sb-active">Active</span><button class="btn btn-outline" style="padding:6px 14px;font-size:12px;">Edit</button></div></div>
+          <div class="listing-row"><div class="listing-info"><h4>Onions</h4><p>12 kg remaining • Harvested Nov 28</p></div><div style="display:flex;align-items:center;gap:12px;"><span class="listing-price">₹18/kg</span><span class="status-badge sb-low">Low Stock</span><button class="btn btn-outline" style="padding:6px 14px;font-size:12px;">Edit</button></div></div>
+          <div class="listing-row"><div class="listing-info"><h4>Green Chillies</h4><p>Sold out • Dec 2</p></div><div style="display:flex;align-items:center;gap:12px;"><span class="listing-price">₹60/kg</span><span class="status-badge sb-out">Sold Out</span><button class="btn btn-primary" style="padding:6px 14px;font-size:12px;" onclick="showDashTab('add')">Relist</button></div></div>
+          <button class="btn btn-primary" style="margin-top:20px;justify-content:center;width:100%;" onclick="showDashTab('add')">+ Add New Listing</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- end page-farmer -->
+
+
+<!-- =====================================================
+     CONSUMER DASHBOARD PAGE
+====================================================== -->
+<div id="page-consumer" class="page">
+  <div class="dashboard-layout">
+    <div class="sidebar">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" style="background:#1565c0;">A</div>
+        <div>
+          <div class="sidebar-name">Ananya Sharma</div>
+          <div class="sidebar-role">Hyderabad, Telangana</div>
+        </div>
+      </div>
+      <ul class="sidebar-nav">
+        <li><a class="active" onclick="showConsumerTab('orders')"><span class="sicon">📦</span> My Orders</a></li>
+        <li><a onclick="showConsumerTab('cart')"><span class="sicon">🛒</span> Cart <span class="cart-badge" id="cartCount">3</span></a></li>
+        <li><a onclick="showConsumerTab('subscription')"><span class="sicon">🌿</span> My Basket</a></li>
+        <li><a><span class="sicon">💬</span> Farmer Chat</a></li>
+        <li><a><span class="sicon">⭐</span> FarmCoins</a></li>
+        <li><a onclick="showPage('home')"><span class="sicon">🏠</span> Marketplace</a></li>
+        <li style="margin-top:40px;"><a onclick="showPage('home')"><span class="sicon">🚪</span> Sign Out</a></li>
+      </ul>
+    </div>
+    <div class="dash-content">
+
+      <!-- ORDERS TAB -->
+      <div id="ctab-orders">
+        <div class="dash-header"><h2>Your Orders 🌾</h2><p>Track your farm-fresh deliveries in real time</p></div>
+        <div class="order-track">
+          <div class="track-header">
+            <div><div class="track-id">#FD-4821 • Ordered Today, 9:14 AM</div><div class="track-title">Tomatoes 5kg from Ramesh Reddy</div></div>
+            <div style="text-align:right;"><div style="font-family:'DM Mono',monospace;font-size:22px;color:var(--green-dark);">₹100</div><div style="font-size:12px;color:var(--text-muted);">Paid via UPI</div></div>
+          </div>
+          <div class="track-steps">
+            <div class="track-step"><div class="ts-circle ts-done">✓</div><div class="ts-label">Order Placed</div></div>
+            <div class="track-step"><div class="ts-circle ts-done">✓</div><div class="ts-label">Farmer Accepted</div></div>
+            <div class="track-step"><div class="ts-circle ts-active" style="border-color:var(--green-mid);">📦</div><div class="ts-label" style="color:var(--green-mid);font-weight:600;">Packing Now</div></div>
+            <div class="track-step"><div class="ts-circle">🚗</div><div class="ts-label">Picked Up</div></div>
+            <div class="track-step"><div class="ts-circle">🏠</div><div class="ts-label">Delivered</div></div>
+          </div>
+          <div style="margin-top:18px;padding:14px 16px;background:var(--green-pale);border-radius:12px;font-size:14px;color:var(--text-mid);">
+            📸 Ramesh just uploaded a packing photo — your tomatoes are fresh off the vine this morning!
+            <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Expected delivery: Today, 6–8 PM</div>
+          </div>
+        </div>
+        <div class="dash-card"><h3>Order History</h3>
+          <div class="order-row"><div><div class="order-num">#FD-4815 • Nov 30</div><div class="order-name">Spinach 2kg + Coriander 500g</div><div class="order-meta">From Lakshmi Devi, Nalgonda</div></div><div style="text-align:right;"><span class="status-badge sb-active">Delivered</span><div style="font-family:'DM Mono',monospace;font-size:18px;color:var(--green-dark);margin-top:6px;">₹74</div><div style="font-size:12px;color:var(--green-bright);margin-top:2px;">+7 FarmCoins</div></div></div>
+          <div class="order-row"><div><div class="order-num">#FD-4802 • Nov 25</div><div class="order-name">Tomatoes 10kg</div><div class="order-meta">From Ramesh Reddy, Karimnagar</div></div><div style="text-align:right;"><span class="status-badge sb-active">Delivered</span><div style="font-family:'DM Mono',monospace;font-size:18px;color:var(--green-dark);margin-top:6px;">₹200</div><div style="font-size:12px;color:var(--green-bright);margin-top:2px;">+20 FarmCoins</div></div></div>
+        </div>
+      </div>
+
+      <!-- CART TAB
+           -------------------------------------------------------
+           🖼️ CART ITEM IMAGES (3 items):
+           1. Tomatoes cart image  → first <img src="..." style="width:48px...">
+           2. Onions cart image    → second <img src="..." style="width:48px...">
+           3. Spinach cart image   → third <img src="..." style="width:48px...">
+           ------------------------------------------------------- -->
+      <div id="ctab-cart" style="display:none;">
+        <div class="dash-header"><h2>Your Cart 🛒</h2><p>Review and checkout your fresh produce</p></div>
+        <div class="dash-card">
+          <h3>Cart Items</h3>
+          <div class="listing-row">
+            <div style="display:flex;gap:12px;align-items:center;">
+              <img src="https://media.post.rvohealth.io/wp-content/uploads/2020/09/AN313-Tomatoes-732x549-Thumb.jpg"
+                   style="width:48px;height:48px;border-radius:8px;object-fit:cover;">
+              <!-- ↑ Replace with tomato cart thumbnail -->
+              <div class="listing-info"><h4>Tomatoes</h4><p>Ramesh Reddy • 3 kg</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;"><span class="listing-price">₹60</span><button style="background:none;border:none;cursor:pointer;font-size:18px;color:var(--text-muted);">🗑</button></div>
+          </div>
+          <div class="listing-row">
+            <div style="display:flex;gap:12px;align-items:center;">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGbSzbkk21KpNb3qgm_ONfT2FrOUfH9HZ0uQ&s"
+                   style="width:48px;height:48px;border-radius:8px;object-fit:cover;">
+              <!-- ↑ Replace with onion cart thumbnail -->
+              <div class="listing-info"><h4>Onions</h4><p>Ramesh Reddy • 2 kg</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;"><span class="listing-price">₹36</span><button style="background:none;border:none;cursor:pointer;font-size:18px;color:var(--text-muted);">🗑</button></div>
+          </div>
+          <div class="listing-row">
+            <div style="display:flex;gap:12px;align-items:center;">
+              <img src="https://png.pngtree.com/png-clipart/20250415/original/pngtree-bunch-of-green-spinach-leaves-with-stems-freshly-picked-healthy-png-image_20810806.png"
+                style="width:48px;height:48px;border-radius:8px;object-fit:cover;">
+              <!-- ↑ Replace with spinach cart thumbnail -->
+              <div class="listing-info"><h4>Spinach</h4><p>Lakshmi Devi • 1 kg</p></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;"><span class="listing-price">₹30</span><button style="background:none;border:none;cursor:pointer;font-size:18px;color:var(--text-muted);">🗑</button></div>
+          </div>
+          <div style="border-top:1px solid var(--border);margin-top:16px;padding-top:16px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px;color:var(--text-muted);"><span>Subtotal</span><span>₹126</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px;color:var(--text-muted);"><span>Delivery</span><span style="color:var(--green-mid);">Free ✓</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px;color:var(--green-mid);font-weight:500;"><span>FarmCoins Discount</span><span>-₹13</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:18px;font-weight:600;color:var(--text-dark);"><span>Total</span><span style="font-family:'DM Mono',monospace;">₹113</span></div>
+          </div>
+          <button class="btn btn-primary btn-lg" style="margin-top:20px;width:100%;justify-content:center;" onclick="alert('Order placed! 🎉 Your fresh produce will arrive in 24 hours.')">Pay ₹113 via UPI →</button>
+          <button class="btn btn-outline" style="margin-top:10px;width:100%;justify-content:center;">Pay via COD</button>
+        </div>
+      </div>
+
+      <!-- SUBSCRIPTION TAB -->
+      <div id="ctab-subscription" style="display:none;">
+        <div class="dash-header"><h2>Your Weekly Basket 🌿</h2><p>Family basket — delivers every Thursday</p></div>
+        <div class="metrics-row">
+          <div class="metric-card"><div class="metric-icon">💰</div><div class="metric-val">₹180</div><div class="metric-label">Saved This Month</div><div class="metric-change up">↑ 15% discount</div></div>
+          <div class="metric-card"><div class="metric-icon">🌾</div><div class="metric-val">8</div><div class="metric-label">Baskets Received</div></div>
+          <div class="metric-card"><div class="metric-icon">⭐</div><div class="metric-val">240</div><div class="metric-label">FarmCoins Earned</div></div>
+        </div>
+        <div class="dash-card"><h3>Next Basket — Thursday, Dec 5</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:4px;">
+            <div style="background:var(--green-pale);border-radius:12px;padding:14px;text-align:center;"><div style="font-size:24px;margin-bottom:6px;">🍅</div><div style="font-size:14px;font-weight:600;">Tomatoes</div><div style="font-size:12px;color:var(--text-muted);">2 kg • Ramesh</div></div>
+            <div style="background:var(--green-pale);border-radius:12px;padding:14px;text-align:center;"><div style="font-size:24px;margin-bottom:6px;">🧅</div><div style="font-size:14px;font-weight:600;">Onions</div><div style="font-size:12px;color:var(--text-muted);">1 kg • Ramesh</div></div>
+            <div style="background:var(--green-pale);border-radius:12px;padding:14px;text-align:center;"><div style="font-size:24px;margin-bottom:6px;">🥬</div><div style="font-size:14px;font-weight:600;">Spinach</div><div style="font-size:12px;color:var(--text-muted);">500g • Lakshmi</div></div>
+            <div style="background:var(--green-pale);border-radius:12px;padding:14px;text-align:center;"><div style="font-size:24px;margin-bottom:6px;">🫚</div><div style="font-size:14px;font-weight:600;">Coriander</div><div style="font-size:12px;color:var(--text-muted);">250g • Lakshmi</div></div>
+            <div style="background:var(--green-pale);border-radius:12px;padding:14px;text-align:center;cursor:pointer;" onclick="alert('Customise your basket!')"><div style="font-size:24px;margin-bottom:6px;">➕</div><div style="font-size:14px;font-weight:600;color:var(--green-mid);">Add Item</div></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="alert('Basket paused for next week.')">Pause This Week</button>
+            <button class="btn btn-outline" onclick="alert('Customising your basket...')">Customise Basket</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><!-- end page-consumer -->
+
+
+<!-- =====================================================
+     LOGIN / SIGNUP MODAL
+====================================================== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h3 id="modalTitle">Welcome to FarmDirect</h3>
+    <p class="modal-sub" id="modalSub">Sign in or create your account</p>
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="tab-login" onclick="switchModalTab('login')">Login</button>
+      <button class="modal-tab" id="tab-signup" onclick="switchModalTab('signup')">Sign Up</button>
+    </div>
+    <div id="modal-login" class="modal-form">
+      <input type="tel" placeholder="📱 WhatsApp / Mobile Number">
+      <input type="text" placeholder="🔐 Enter OTP" id="otpInput" style="display:none;">
+      <button class="btn btn-primary" id="modalLoginBtn" onclick="handleLogin()">Send OTP</button>
+      <div class="otp-note">We'll send a 4-digit OTP to your WhatsApp</div>
+    </div>
+    <div id="modal-signup" class="modal-form" style="display:none;">
+      <input type="text" placeholder="👤 Full Name">
+      <input type="tel" placeholder="📱 WhatsApp Number">
+      <input type="text" placeholder="📍 City / Village">
+      <button class="btn btn-primary" onclick="handleSignup()">Create Account & Get OTP</button>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOAT BUTTON -->
+<button class="whatsapp-float" onclick="alert('Opening WhatsApp support...')">💬</button>
+
+<script src="script.js"></script>
+</body>
+</html>
