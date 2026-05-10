@@ -114,7 +114,6 @@ FarmDirect aims to:
 - Netlify Deployment
 
 ---
-
 # 📂 Project Structure
 
 ```bash
@@ -123,10 +122,14 @@ FarmDirect/
 ├── index.html
 ├── styles.css
 ├── script.js
+├── README.md
+│
 ├── screenshots/
-│   ├── homepage.png
-│   ├── marketplace.png
-│   └── dashboard.png
+│   ├── Homepage.png
+│   ├── Marketplace.png
+│   ├── FramerDashboard.png
+│   └── CustomerDashboard.png
+```
 
 # 📸 Screenshots
 
@@ -223,9 +226,9 @@ This project was developed by a team of 5 members as part of the Design Thinking
 2. Ch.Samsritha
 3. R.Lishitha
 4. M.Sai PoojaSree
+5. V.pranathi
 
 ---
-
 # 📜 License
 
 This project is created for educational and demonstration purposes only.
