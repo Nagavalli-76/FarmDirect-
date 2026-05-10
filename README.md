@@ -130,30 +130,6 @@ FarmDirect/
 │   ├── FramerDashboard.png
 │   └── CustomerDashboard.png
 ```
-
-# 📸 Screenshots
-
-## 🏠 Homepage
-![Homepage](<img src="Screenshot/Homepage.png" alt="Homepage" width="800">)
-
----
-
-## 🛒 Marketplace
-![Marketplace](<img src="Screenshot/Marketplace.png" alt="Marketplace" width="800">)
-
----
-
-## 👨‍🌾 Farmer Dashboard
-![Farmer Dashboard](<img src="Screenshot/FramerDashboard.png" alt="Farmer Dashboard" width="800">)
-
----
-
-## 👤 Consumer Dashboard
-![Consumer Dashboard](<img src="Screenshot/CustomerDashboard.png" alt="Consumer Dashboard" width="800">)
-
----
----
-
 # 🌟 Unique Selling Points
 
 - Direct farmer-to-consumer marketplace
