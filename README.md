@@ -4,7 +4,6 @@
 FarmDirect is a modern agriculture marketplace platform designed to connect farmers directly with consumers without middlemen. The platform enables farmers to sell fresh produce at fair prices while consumers receive fresh farm products with complete transparency and faster delivery.
 
 This project was developed as part of the **Design Thinking & Innovation Challenge** to demonstrate how digital technology can improve the agricultural supply chain and empower farmers across India.
-
 ---
 
 # 🌐 Live Demo
@@ -124,5 +123,120 @@ FarmDirect/
 ├── index.html
 ├── styles.css
 ├── script.js
-├── assets/
-└── README.md
+├── screenshots/
+│   ├── homepage.png
+│   ├── marketplace.png
+│   └── dashboard.png
+
+# 📸 Screenshots
+
+## 🏠 Homepage
+![Homepage](Screenshot/Homepage.png)
+
+---
+
+## 🛒 Marketplace
+![Marketplace](Screenshot/Marketplace.png)
+
+---
+
+## 👨‍🌾 Farmer Dashboard
+![Farmer Dashboard](Screenshot/FramerDashboard.png)
+
+---
+
+## 👤 Consumer Dashboard
+![Consumer Dashboard](Screenshots/CustomerDashboard.png)
+
+---
+---
+
+# 🌟 Unique Selling Points
+
+- Direct farmer-to-consumer marketplace
+- AI-powered smart pricing system
+- Transparent supply chain tracking
+- Fresh produce delivery within 24 hours
+- Interactive dashboards for farmers and consumers
+- Weekly subscription basket system
+- Loyalty rewards using FarmCoins
+
+---
+
+# 🌍 Real World Impact
+
+FarmDirect helps:
+- Increase farmer profits
+- Reduce dependency on middlemen
+- Minimize food wastage
+- Deliver fresher products to consumers
+- Encourage digital agriculture in India
+
+---
+
+# 🧠 Design Thinking Process
+
+## Empathize
+Understanding the challenges faced by farmers and consumers.
+
+## Define
+Identifying issues like unfair pricing, middlemen dependency, and lack of transparency.
+
+## Ideate
+Developing a digital platform that directly connects farmers and consumers.
+
+## Prototype
+Designing and building the FarmDirect demo website.
+
+## Test
+Testing dashboards, marketplace flow, and responsive design experience.
+
+---
+
+# 📈 Future Scope
+
+- Mobile application development
+- AI crop recommendation system
+- Real-time GPS delivery tracking
+- Multi-language regional support
+- Online payment integration
+- Blockchain-based supply transparency
+
+---
+
+# 🎯 Learning Outcomes
+
+- UI/UX Design
+- Frontend Web Development
+- Design Thinking Methodology
+- Team Collaboration
+- Problem Solving & Innovation
+- Responsive Website Development
+
+---
+
+# 👥 Team Members
+
+This project was developed by a team of 5 members as part of the Design Thinking & Innovation Challenge.
+
+1. K.Nagavalli
+2. Ch.Samsritha
+3. R.Lishitha
+4. M.Sai PoojaSree
+
+---
+
+# 📜 License
+
+This project is created for educational and demonstration purposes only.
+
+---
+
+# ❤️ Acknowledgement
+
+We sincerely thank our faculty members, mentors, and teammates for their valuable guidance and support throughout the project development.
+
+---
+
+# 🌱 FarmDirect
+### Empowering Farmers • Delivering Freshness • Building Trust
